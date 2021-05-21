@@ -1,0 +1,36 @@
+/*******
+ * Read input from STDIN
+ * Use: console.log()  to output your result.
+ * Use: console.error() to output debug information into STDERR
+ * ***/
+
+var input = [];
+
+readline_object.on("line", (value) => { //Read input values
+	input.push(value);
+})
+//Call ContestResponse when all inputs are read
+readline_object.on("close", ContestResponse); 
+
+
+function ContestResponse(){
+    let ans = 0;
+
+    for(i=0;i<input.length;i++){
+        console.error("input "+i+" "+input[i]);
+        let temp = input[i].split('');
+        let suspect = false;
+        if(temp.length >= 5){
+            suspect = true;
+            for(j=temp.length-1;j>temp.length - 6;j--){
+                if(parseFloat(temp[j]) != temp[j]){
+                    suspect = false;
+                    }
+                }
+        }
+        if (suspect == true){
+            ans++;
+        } 
+    }
+    console.log(ans);
+}
